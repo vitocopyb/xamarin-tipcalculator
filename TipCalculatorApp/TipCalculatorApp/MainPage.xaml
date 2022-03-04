@@ -3,22 +3,59 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="TipCalculatorApp.MainPage">
 
-    <StackLayout>
-        <Frame BackgroundColor="#2196F3" Padding="24" CornerRadius="0">
-            <Label Text="Welcome to Xamarin.Forms!" HorizontalTextAlignment="Center" TextColor="White" FontSize="36"/>
-        </Frame>
-        <Label Text="Start developing now" FontSize="Title" Padding="30,10,30,10"/>
-        <Label Text="Make changes to your XAML file and save to see your UI update in the running app with XAML Hot Reload. Give it a try!" FontSize="16" Padding="30,0,30,0"/>
-        <Label FontSize="16" Padding="30,24,30,0">
-            <Label.FormattedText>
-                <FormattedString>
-                    <FormattedString.Spans>
-                        <Span Text="Learn more at "/>
-                        <Span Text="https://aka.ms/xamarin-quickstart" FontAttributes="Bold"/>
-                    </FormattedString.Spans>
-                </FormattedString>
-            </Label.FormattedText>
-        </Label>
-    </StackLayout>
+    <TableView Intent="Form">
+        <TableSection Title="Datos">
+            <EntryCell
+                x:Name="txtTotal"
+                Label="Total"
+                Placeholder="$0.0"
+            />
+            <EntryCell
+                x:Name="txtPropina"
+                Label="Propina (%)"
+                Placeholder="0.0"
+            />
+            <EntryCell
+                x:Name="txtNoPersonas"
+                Label="Número de personas"
+                Placeholder="0"
+            />
+        </TableSection>
+        <TableSection>
+            <ViewCell>
+                <ViewCell.View>
+                    <StackLayout>
+                        <Button
+                            x:Name="btnCalcular"
+                            Text="Calcular"
+                            Clicked="BtnCalcular_Clicked"
+                        />
+                    </StackLayout>
+                </ViewCell.View>
+            </ViewCell>
+        </TableSection>
+        <TableSection Title="Resultado">
+            <TextCell
+                x:Name="lblPropina"
+                Text="Propina:"
+                Detail="$0.0"
+            />
+            <TextCell
+                x:Name="lblTotal"
+                Text="Total:"
+                Detail="$0.0"
+            />
+            <TextCell
+                x:Name="lblPropinaPorPersona"
+                Text="Propina por persona:"
+                Detail="$0.0"
+            />
+            <TextCell
+                x:Name="lblTotalPorPersona"
+                Text="Total por persona:"
+                Detail="$0.0"
+            />
+        </TableSection>
+    </TableView>
 
 </ContentPage>
