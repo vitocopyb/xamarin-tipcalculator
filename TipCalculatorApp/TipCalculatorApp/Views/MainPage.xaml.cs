@@ -5,24 +5,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TipCalculatorApp.Models;
+using TipCalculatorApp.ViewModels;
 using Xamarin.Forms;
 
-namespace TipCalculatorApp
+namespace TipCalculatorApp.Views
 {
     public partial class MainPage : ContentPage
     {
-        private TipModel tipModel;
-
         public MainPage()
         {
             InitializeComponent();
-            tipModel = new TipModel
-            {
-                Propina = 5,
-                NoPersonas = 2
-            };
-
-            BindingContext = tipModel;
+            BindingContext = new MainPageViewModel();
         }
 
         private void BtnCalcular_Clicked(object sender, EventArgs e)
@@ -44,7 +37,6 @@ namespace TipCalculatorApp
 
             ////lblTotalPorPersona.Detail = ((total + totalPropina) / noPersonas).ToString("C");
             //tipModel.TotalPorPersona = (tipModel.Total + tipModel.TotalPropina) / tipModel.NoPersonas;
-
         }
     }
 }

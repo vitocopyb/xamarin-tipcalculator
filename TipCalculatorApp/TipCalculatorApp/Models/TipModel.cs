@@ -9,13 +9,17 @@ namespace TipCalculatorApp.Models
 {
     public class TipModel : INotifyPropertyChanged
     {
+        public TipModel()
+        {
+
+        }
+
         private decimal totalPorPersona;
         private decimal propinaPorPersona;
         private decimal totalConPropina;
         private decimal totalPropina;
         private int propina;
 
-        public Command OperationsCommand { get; set; }
         public decimal Total { get; set; }
         public int Propina
         {
@@ -64,11 +68,6 @@ namespace TipCalculatorApp.Models
             }
         }
 
-        public TipModel()
-        {
-            OperationsCommand = new Command(DoOperations);
-        }
-
         public event PropertyChangedEventHandler PropertyChanged;
 
         // Create the OnPropertyChanged method to raise the event
@@ -77,14 +76,5 @@ namespace TipCalculatorApp.Models
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
         }
-
-        private void DoOperations()
-        {
-            TotalPropina = Total * Propina / 100;
-            TotalConPropina = TotalPropina + Total;
-            PropinaPorPersona = TotalPropina / NoPersonas;
-            TotalPorPersona = (Total + TotalPropina) / NoPersonas;
-        }
-
     }
 }
